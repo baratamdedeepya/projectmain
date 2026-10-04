@@ -89,10 +89,10 @@ export const HeroHeadline = ({ onStartSolving, onExploreContests }) => {
       </motion.div>
 
       {/* Headline Wrapper - 100% Centered */}
-      <div className="w-full flex flex-col items-center justify-center mt-12 ">
+      <div className="w-full flex flex-col items-center justify-center mt-8 sm:mt-12">
         <motion.div
           variants={itemVariants}
-          className="w-full flex items-center justify-center gap-2.5 sm:gap-4"
+          className="w-full flex items-center justify-center gap-3 sm:gap-5"
         >
           <motion.div
             animate={{ y: [0, -3, 0] }}
@@ -101,7 +101,7 @@ export const HeroHeadline = ({ onStartSolving, onExploreContests }) => {
             <DoodleSwoosh side="left" className="translate-y-1 sm:translate-y-0 text-indigo-500 dark:text-indigo-400" />
           </motion.div>
 
-          <h1 className="font-script font-bold text-5xl sm:text-7xl md:text-8xl tracking-normal text-slate-900 dark:text-white leading-tight select-none">
+          <h1 className="font-pacifico text-5xl sm:text-7xl md:text-8xl lg:text-[96px] tracking-normal text-slate-900 dark:text-white leading-[1.15] select-none">
             Code. Compete.
           </h1>
 
@@ -113,27 +113,27 @@ export const HeroHeadline = ({ onStartSolving, onExploreContests }) => {
           </motion.div>
         </motion.div>
 
-        {/* Line 2: Level Up. in Dancing Script with Sparkles and Underline Swoosh */}
+        {/* Line 2: Level Up. in Pacifico with Sparkles and Underline Swoosh */}
         <motion.div
           variants={itemVariants}
-          className="w-full relative flex flex-col items-center justify-center -mt-1 sm:-mt-2"
+          className="w-full relative flex flex-col items-center justify-center mt-2 sm:mt-3"
         >
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2.5">
-            <SparkleStar color="purple" size="md" className="-translate-y-2 mr-1 sm:mr-2" />
+          <div className="flex items-center justify-center gap-2 sm:gap-3.5">
+            <SparkleStar color="purple" size="lg" className="-translate-y-3 mr-1.5 sm:mr-3 w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" />
 
-            <span className="font-script font-bold text-5xl sm:text-7xl md:text-8xl tracking-normal text-[#5551ff] dark:text-[#818cf8] drop-shadow-xs">
+            <span className="font-pacifico text-5xl sm:text-7xl md:text-8xl lg:text-[96px] tracking-normal text-[#5551ff] dark:text-[#818cf8] leading-[1.15] drop-shadow-xs">
               Level{' '}
             </span>
-            <span className="font-script font-bold text-5xl sm:text-7xl md:text-8xl tracking-normal text-[#ff7849] dark:text-[#fb923c] drop-shadow-xs">
+            <span className="font-pacifico text-5xl sm:text-7xl md:text-8xl lg:text-[96px] tracking-normal text-[#ff7849] dark:text-[#fb923c] leading-[1.15] drop-shadow-xs">
               Up.
             </span>
 
-            <SparkleStar color="orange" size="md" className="-translate-y-2 ml-1 sm:ml-2" />
+            <SparkleStar color="orange" size="lg" className="-translate-y-3 ml-1.5 sm:ml-3 w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" />
           </div>
 
           {/* Hand-drawn Curved Purple Underline Swoosh */}
           <svg
-            className="w-52 sm:w-72 md:w-84 h-4 sm:h-5 text-indigo-500/85 dark:text-indigo-400/90 -mt-1 sm:-mt-2 pointer-events-none"
+            className="w-64 sm:w-84 md:w-[460px] lg:w-[540px] h-5 sm:h-6 md:h-7 text-indigo-500/85 dark:text-indigo-400/90 -mt-1 sm:-mt-2 pointer-events-none"
             viewBox="0 0 280 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

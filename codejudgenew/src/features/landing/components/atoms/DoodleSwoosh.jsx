@@ -4,7 +4,7 @@ export const DoodleSwoosh = ({ side = 'left', className = '' }) => {
   if (side === 'left') {
     return (
       <svg
-        className={`w-7 h-7 sm:w-8 sm:h-8 text-indigo-500 inline-block pointer-events-none select-none ${className}`}
+        className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-indigo-500 inline-block pointer-events-none select-none ${className}`}
         viewBox="0 0 40 40"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export const DoodleSwoosh = ({ side = 'left', className = '' }) => {
 
   return (
     <svg
-      className={`w-7 h-7 sm:w-8 sm:h-8 text-amber-500 inline-block pointer-events-none select-none ${className}`}
+      className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-amber-500 inline-block pointer-events-none select-none ${className}`}
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
