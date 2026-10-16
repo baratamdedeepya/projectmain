@@ -16,7 +16,7 @@ import { CodeEditorPane } from './CodeEditorPane';
 import { use3DTilt } from '../../hooks/use3DTilt';
 import { useIdeRunner } from '../../hooks/useIdeRunner';
 
-export const IdeMockupWindow = () => {
+export const IdeMockupWindow = ({ isReady = true }) => {
   const containerRef = useRef(null);
   const { tilt, tiltProps } = use3DTilt(4);
   const {
@@ -34,9 +34,9 @@ export const IdeMockupWindow = () => {
 
   const { scrollY } = useScroll();
 
-  const rawScrollRotateX = useTransform(scrollY, [0, 360], [20, 0]);
-  const rawScrollScale = useTransform(scrollY, [0, 360], [0.94, 1]);
-  const rawScrollTranslateY = useTransform(scrollY, [0, 360], [25, 0]);
+  const rawScrollRotateX = useTransform(scrollY, [0, 360], [35, 0]);
+  const rawScrollScale = useTransform(scrollY, [0, 360], [0.96, 1]);
+  const rawScrollTranslateY = useTransform(scrollY, [0, 360], [0, 0]);
 
   const scrollRotateX = useSpring(rawScrollRotateX, { stiffness: 100, damping: 26 });
   const scrollScale = useSpring(rawScrollScale, { stiffness: 100, damping: 26 });
@@ -51,9 +51,12 @@ export const IdeMockupWindow = () => {
   ];
 
   return (
-    <div
+    <motion.div
       ref={containerRef}
-      className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 perspective-1000 py-6"
+      initial={{ opacity: 0, y: 35 }}
+      animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
+      transition={{ duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 perspective-1000 pt-0 pb-6"
     >
       
       <motion.div
@@ -140,6 +143,6 @@ export const IdeMockupWindow = () => {
 
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
