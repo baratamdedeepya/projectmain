@@ -5,13 +5,19 @@ import { DashboardLayout } from '../layouts/DashboardLayout';
 import { ProtectedRoute } from './ProtectedRoute';
 import { LandingHeroTemplate } from '../features/landing/components/templates/LandingHeroTemplate';
 import { Dashboard } from '../pages/Dashboard';
+import { SignupPage } from '../pages/Auth/SignupPage';
+import { LoginPage } from '../pages/Auth/LoginPage';
 
 export const AppRoutes = () => {
   return (
     <Routes>
+       <Route path="/signup" element={<SignupPage />} />
+      <Route path="/login" element={<LoginPage />} />
+
       {/* Public Route (Navbar & Footer, No Sidebar) */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<LandingHeroTemplate />} />
+
       </Route>
 
       {/* Admin Protected Routes (Admin Sidebar) */}

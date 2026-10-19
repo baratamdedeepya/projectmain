@@ -90,6 +90,25 @@ export const HeaderNavbar = () => {
             <span className="capitalize">{user?.role ? `${user.role} Dashboard` : 'Dashboard'}</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
+
+        {/* Authentication Buttons */}
+        <div className="flex items-center gap-3">
+          <Link
+            to="/login"
+            className=" px-4 py-2 text-sm font-semibold text-slate-700 transition hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400"
+          >
+          Login
+          
+         </Link>
+
+          <Link
+            to="/signup"
+             className="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500"
+          >
+         Get Started
+         </Link>
+         </div>
+
         </div>
 
         {/* Mobile menu button */}
@@ -149,6 +168,26 @@ export const HeaderNavbar = () => {
               >
                 Go to {user?.role || 'User'} Dashboard
               </Link>
+              
+         {/* Mobile Authentication Buttons */}
+          <div className="flex flex-col gap-3 border-t border-slate-200 pt-4 dark:border-slate-700 md:hidden">
+           <Link
+           to="/login"
+           onClick={() => setMobileMenuOpen(false)}
+           className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-center text-sm font-semibold text-slate-700 transition hover:border-indigo-500 hover:text-indigo-600 dark:border-slate-700 dark:text-slate-200 dark:hover:border-indigo-400 dark:hover:text-indigo-400"
+           >
+           Login
+          </Link>
+
+          <Link
+         to="/signup"
+         onClick={() => setMobileMenuOpen(false)}
+         className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-indigo-500"
+         >
+         Sign Up
+       </Link>
+      </div>
+
             </div>
           </motion.div>
         )}
