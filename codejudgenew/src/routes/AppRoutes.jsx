@@ -7,6 +7,12 @@ import { LandingHeroTemplate } from '../features/landing/components/templates/La
 import { Dashboard } from '../pages/Dashboard';
 import { SignupPage } from '../pages/Auth/SignupPage';
 import { LoginPage } from '../pages/Auth/LoginPage';
+import { DashboardPage } from '../features/student/pages/DashboardPage';
+import { ProblemsPage } from '../features/student/pages/ProblemsPage';
+import { ContestsPage } from '../features/student/pages/ContestsPage';
+import { SubmissionsPage } from '../features/student/pages/SubmissionsPage';
+import { ProfilePage } from '../features/student/pages/ProfilePage';
+
 
 export const AppRoutes = () => {
   return (
@@ -27,12 +33,16 @@ export const AppRoutes = () => {
         </Route>
       </Route>
 
-      {/* Student Protected Routes (Student Sidebar) */}
-      <Route element={<ProtectedRoute allowedRoles={['student']} />}>
-        <Route element={<DashboardLayout />}>
-          <Route path="/student/*" element={<Dashboard />} />
+       {/* Student Protected Routes (Student Sidebar) */}
+       <Route element={<ProtectedRoute allowedRoles={['student']} />}>
+          <Route element={<DashboardLayout />}>
+            <Route path="/student" element={<DashboardPage />} />
+            <Route path="/student/problems" element={<ProblemsPage />} />
+            <Route path="/student/contests" element={<ContestsPage />}  />
+            <Route path="/student/submissions" element={<SubmissionsPage />}  />
+            <Route path="/student/profile" element={<ProfilePage />} />
+          </Route>
         </Route>
-      </Route>
 
       {/* Mentor Protected Routes (Mentor Sidebar) */}
       <Route element={<ProtectedRoute allowedRoles={['mentor']} />}>

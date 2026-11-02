@@ -24,8 +24,11 @@ export const RoleSidebar = () => {
       badge: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300',
       icon: GraduationCap,
       links: [
-        { label: 'Student Dashboard', href: '/student', icon: LayoutDashboard },
-        { label: 'My Courses', href: '/student/courses', icon: BookOpen },
+           { label: 'Dashboard', href: '/student', icon: LayoutDashboard },
+           { label: 'Problems', href: '/student/problems', icon: BookOpen },
+           { label: 'Contests', href: '/student/contests', icon: Users },
+           { label: 'Submissions', href: '/student/submissions', icon: BookOpen },
+           { label: 'Profile', href: '/student/profile', icon: GraduationCap },
       ],
     },
     mentor: {
