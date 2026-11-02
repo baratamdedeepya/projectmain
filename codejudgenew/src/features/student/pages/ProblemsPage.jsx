@@ -114,60 +114,61 @@ export const ProblemsPage = () => {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="font-sans space-y-6">
 
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-slate-500">
+          <p className="text-xs font-medium tracking-wide text-slate-500">
             Practice and improve your skills
           </p>
 
-          <h1 className="text-3xl font-bold text-slate-900 mt-1">
+          <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-slate-800">
             Problems
           </h1>
 
-          <p className="text-slate-500 mt-2">
+          <p className="mt-1.5 text-sm font-normal text-slate-500">
             Challenge yourself with coding problems.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-indigo-50 text-indigo-600 px-4 py-3 rounded-xl">
-          <Code2 className="w-5 h-5" />
-          <span className="text-sm font-semibold">
+        <div className="inline-flex items-center gap-2 self-start rounded-lg bg-indigo-50 px-3.5 py-2.5 text-indigo-600">
+          <Code2 className="h-4 w-4" />
+
+          <span className="text-xs font-medium">
             {problems.filter((p) => p.solved).length} / {problems.length} Solved
           </span>
         </div>
       </div>
 
       {/* Filters Card */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+      <div className="rounded-xl border border-slate-200/80 bg-white p-5 shadow-sm">
 
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
 
           <input
             type="text"
             placeholder="Search problems by name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition"
+            className="w-full rounded-lg border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm font-normal text-slate-700 placeholder:text-slate-400 transition focus:border-indigo-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100"
           />
         </div>
 
-        {/* Difficulty */}
-        <div className="flex flex-wrap items-center gap-2 mt-5">
-          <SlidersHorizontal className="w-4 h-4 text-slate-400 mr-1" />
+        {/* Difficulty Filters */}
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <SlidersHorizontal className="mr-1 h-4 w-4 text-slate-400" />
 
           {['All', 'Easy', 'Medium', 'Hard'].map((level) => (
             <button
               key={level}
               onClick={() => setDifficulty(level)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`rounded-lg px-3.5 py-2 text-xs font-medium transition-all duration-200 ${
                 difficulty === level
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'bg-slate-100 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600'
+                  ? 'bg-indigo-500 text-white shadow-sm'
+                  : 'bg-slate-50 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600'
               }`}
             >
               {level}
@@ -176,12 +177,12 @@ export const ProblemsPage = () => {
         </div>
 
         {/* Topic and Status */}
-        <div className="flex flex-col sm:flex-row gap-3 mt-4">
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row">
 
           <select
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-600 outline-none focus:border-indigo-400"
+            className="flex-1 rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-normal text-slate-600 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-50"
           >
             {topics.map((item) => (
               <option key={item} value={item}>
@@ -193,7 +194,7 @@ export const ProblemsPage = () => {
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-600 outline-none focus:border-indigo-400"
+            className="flex-1 rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-normal text-slate-600 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-50"
           >
             <option value="All">All Status</option>
             <option value="Solved">Solved</option>
@@ -204,21 +205,23 @@ export const ProblemsPage = () => {
       </div>
 
       {/* Problem List */}
-      <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+      <div className="overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm">
 
-        <div className="p-5 border-b border-slate-100 flex justify-between items-center">
+        {/* List Heading */}
+        <div className="flex items-center justify-between border-b border-slate-100 p-5">
           <div>
-            <h2 className="font-bold text-slate-900">
+            <h2 className="text-base font-semibold tracking-tight text-slate-800">
               Problem Set
             </h2>
-            <p className="text-sm text-slate-500 mt-1">
+
+            <p className="mt-1 text-xs font-normal text-slate-500">
               {filteredProblems.length} problems found
             </p>
           </div>
         </div>
 
         {/* Table Header */}
-        <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 bg-slate-50 text-xs font-semibold text-slate-500 uppercase">
+        <div className="hidden grid-cols-12 gap-4 bg-slate-50/80 px-6 py-3 text-[11px] font-semibold uppercase tracking-wide text-slate-500 md:grid">
           <div className="col-span-1">Status</div>
           <div className="col-span-5">Problem</div>
           <div className="col-span-2">Topic</div>
@@ -227,66 +230,78 @@ export const ProblemsPage = () => {
           <div className="col-span-1"></div>
         </div>
 
-        {/* Rows */}
+        {/* Problem Rows */}
         <div>
           {filteredProblems.map((problem) => (
             <div
               key={problem.id}
-              className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 px-6 py-5 border-b border-slate-100 last:border-0 items-center hover:bg-indigo-50/40 transition-all duration-200 group"
+              className="group grid grid-cols-1 items-center gap-3 border-b border-slate-100 px-5 py-4 transition-colors duration-200 last:border-0 hover:bg-indigo-50/30 md:grid-cols-12 md:gap-4 md:px-6"
             >
 
+              {/* Status */}
               <div className="md:col-span-1">
                 {problem.solved ? (
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                 ) : (
-                  <Circle className="w-5 h-5 text-slate-300" />
+                  <Circle className="h-4 w-4 text-slate-300" />
                 )}
               </div>
 
+              {/* Problem Name */}
               <div className="md:col-span-5">
-                <h3 className="font-semibold text-slate-800 group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-sm font-medium leading-5 text-slate-700 transition-colors group-hover:text-indigo-600">
                   {problem.id}. {problem.title}
                 </h3>
-                <p className="text-xs text-slate-400 mt-1 md:hidden">
+
+                <p className="mt-1 text-xs font-normal text-slate-400 md:hidden">
                   {problem.topic}
                 </p>
               </div>
 
-              <div className="md:col-span-2 hidden md:block">
-                <span className="text-sm text-slate-500">
+              {/* Topic */}
+              <div className="hidden md:col-span-2 md:block">
+                <span className="text-xs font-normal text-slate-500">
                   {problem.topic}
                 </span>
               </div>
 
+              {/* Difficulty */}
               <div className="md:col-span-2">
-                <span className={`text-xs font-semibold px-3 py-1.5 rounded-full ${difficultyStyles[problem.difficulty]}`}>
+                <span
+                  className={`inline-flex rounded-md px-2.5 py-1 text-xs font-medium ${difficultyStyles[problem.difficulty]}`}
+                >
                   {problem.difficulty}
                 </span>
               </div>
 
-              <div className="md:col-span-1 text-sm text-slate-500">
+              {/* Acceptance */}
+              <div className="text-xs font-medium text-slate-500 md:col-span-1">
                 {problem.acceptance}
               </div>
 
+              {/* Open Button */}
               <div className="md:col-span-1">
                 <button
                   title="Open problem"
-                  className="p-2 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-100 transition"
+                  className="rounded-md p-1.5 text-slate-400 transition hover:bg-indigo-50 hover:text-indigo-600"
                 >
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="h-4 w-4" />
                 </button>
               </div>
 
             </div>
           ))}
 
+          {/* Empty State */}
           {filteredProblems.length === 0 && (
             <div className="py-12 text-center">
-              <Search className="w-8 h-8 text-slate-300 mx-auto mb-3" />
-              <p className="font-semibold text-slate-700">
+              <Search className="mx-auto mb-3 h-7 w-7 text-slate-300" />
+
+              <p className="text-sm font-medium text-slate-700">
                 No problems found
               </p>
-              <p className="text-sm text-slate-500 mt-1">
+
+              <p className="mt-1 text-xs font-normal text-slate-500">
                 Try changing your search or filters.
               </p>
             </div>

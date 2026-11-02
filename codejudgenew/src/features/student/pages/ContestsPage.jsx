@@ -79,111 +79,109 @@ export const ContestsPage = () => {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="font-sans space-y-6">
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-slate-500">
+          <p className="text-xs font-medium tracking-wide text-slate-500">
             Compete, learn and grow
           </p>
 
-          <h1 className="text-3xl font-bold text-slate-900 mt-1">
+          <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-slate-800">
             Contests
           </h1>
 
-          <p className="text-slate-500 mt-2">
+          <p className="mt-1.5 text-sm text-slate-500">
             Participate in coding contests and challenge yourself.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-indigo-50 text-indigo-600 px-4 py-3 rounded-xl">
-          <Trophy className="w-5 h-5" />
-          <span className="text-sm font-semibold">
+        <div className="inline-flex items-center gap-2 self-start rounded-lg bg-indigo-50 px-3.5 py-2.5 text-indigo-600">
+          <Trophy className="h-4 w-4" />
+          <span className="text-xs font-medium">
             Coding Arena
           </span>
         </div>
       </div>
 
       {/* Contest Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
 
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-          <div className="flex justify-between items-center">
-            <p className="text-sm text-slate-500">
-              Upcoming Contests
-            </p>
-            <CalendarDays className="w-5 h-5 text-indigo-600" />
-          </div>
+        {[
+          {
+            title: 'Upcoming Contests',
+            value: contests.filter((c) => c.status === 'Upcoming').length,
+            description: "Don't miss your next challenge",
+            icon: CalendarDays,
+            color: 'text-indigo-500',
+          },
+          {
+            title: 'Contests Participated',
+            value: '8',
+            description: 'Keep building your experience',
+            icon: Trophy,
+            color: 'text-amber-500',
+          },
+          {
+            title: 'Best Contest Rank',
+            value: '#24',
+            description: 'Your personal best',
+            icon: Users,
+            color: 'text-emerald-500',
+          },
+        ].map((stat) => {
+          const Icon = stat.icon;
 
-          <h2 className="text-2xl font-bold text-slate-900 mt-4">
-            {contests.filter((c) => c.status === 'Upcoming').length}
-          </h2>
+          return (
+            <div
+              key={stat.title}
+              className="rounded-xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-medium text-slate-500">
+                  {stat.title}
+                </p>
 
-          <p className="text-xs text-slate-500 mt-1">
-            Don't miss your next challenge
-          </p>
-        </div>
+                <Icon className={`h-4 w-4 ${stat.color}`} />
+              </div>
 
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-          <div className="flex justify-between items-center">
-            <p className="text-sm text-slate-500">
-              Contests Participated
-            </p>
-            <Trophy className="w-5 h-5 text-amber-500" />
-          </div>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-800">
+                {stat.value}
+              </h2>
 
-          <h2 className="text-2xl font-bold text-slate-900 mt-4">
-            8
-          </h2>
-
-          <p className="text-xs text-slate-500 mt-1">
-            Keep building your experience
-          </p>
-        </div>
-
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-          <div className="flex justify-between items-center">
-            <p className="text-sm text-slate-500">
-              Best Contest Rank
-            </p>
-            <Users className="w-5 h-5 text-emerald-600" />
-          </div>
-
-          <h2 className="text-2xl font-bold text-slate-900 mt-4">
-            #24
-          </h2>
-
-          <p className="text-xs text-slate-500 mt-1">
-            Your personal best
-          </p>
-        </div>
+              <p className="mt-1.5 text-xs text-slate-500">
+                {stat.description}
+              </p>
+            </div>
+          );
+        })}
 
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+      <div className="rounded-xl border border-slate-200/80 bg-white p-5 shadow-sm">
 
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
 
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search contests..."
-            className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition"
+            className="w-full rounded-lg border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm text-slate-700 placeholder:text-slate-400 outline-none transition focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-50"
           />
         </div>
 
-        <div className="flex flex-wrap gap-2 mt-5">
+        <div className="mt-4 flex flex-wrap gap-2">
           {['All', 'Upcoming', 'Live', 'Completed'].map((item) => (
             <button
               key={item}
               onClick={() => setFilter(item)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`rounded-lg px-3.5 py-2 text-xs font-medium transition-all duration-200 ${
                 filter === item
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'bg-slate-100 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600'
+                  ? 'bg-indigo-500 text-white shadow-sm'
+                  : 'bg-slate-50 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600'
               }`}
             >
               {item}
@@ -194,69 +192,74 @@ export const ContestsPage = () => {
       </div>
 
       {/* Contest Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
 
         {filteredContests.map((contest) => (
           <div
             key={contest.id}
-            className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-indigo-200 transition-all duration-300"
+            className="rounded-xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
           >
 
             <div className="flex items-start justify-between gap-3">
-              <div className="p-3 bg-indigo-50 rounded-xl">
-                <Trophy className="w-6 h-6 text-indigo-600" />
+              <div className="rounded-lg bg-indigo-50 p-2.5">
+                <Trophy className="h-5 w-5 text-indigo-500" />
               </div>
 
-              <span className={`text-xs font-semibold px-3 py-1.5 rounded-full ${statusStyles[contest.status]}`}>
+              <span
+                className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${statusStyles[contest.status]}`}
+              >
                 {contest.status === 'Live' && (
-                  <Radio className="inline w-3 h-3 mr-1" />
+                  <Radio className="mr-1 h-3 w-3" />
                 )}
                 {contest.status}
               </span>
             </div>
 
-            <h2 className="text-lg font-bold text-slate-900 mt-5">
+            <h2 className="mt-4 text-base font-semibold tracking-tight text-slate-800">
               {contest.title}
             </h2>
 
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="mt-1.5 text-xs font-normal leading-5 text-slate-500">
               {contest.description}
             </p>
 
-            <div className="flex flex-wrap gap-4 mt-5 text-sm text-slate-500">
+            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500">
 
-              <div className="flex items-center gap-2">
-                <CalendarDays className="w-4 h-4 text-indigo-500" />
+              <div className="flex items-center gap-1.5">
+                <CalendarDays className="h-3.5 w-3.5 text-indigo-500" />
                 {contest.date}
               </div>
 
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-indigo-500" />
+              <div className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5 text-indigo-500" />
                 {contest.duration}
               </div>
 
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-indigo-500" />
+              <div className="flex items-center gap-1.5">
+                <Users className="h-3.5 w-3.5 text-indigo-500" />
                 {contest.participants} participants
               </div>
 
             </div>
 
-            <div className="flex items-center justify-between mt-6 pt-5 border-t border-slate-100">
+            <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
 
-              <span className="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg">
+              <span className="rounded-md bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-500">
                 {contest.type}
               </span>
 
               <button
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-medium transition-all duration-200 ${
                   contest.status === 'Completed'
                     ? 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                    : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-md'
+                    : 'bg-indigo-500 text-white hover:bg-indigo-600 hover:shadow-sm'
                 }`}
               >
-                {contest.status === 'Completed' ? 'View Results' : 'Join Contest'}
-                <ArrowUpRight className="w-4 h-4" />
+                {contest.status === 'Completed'
+                  ? 'View Results'
+                  : 'Join Contest'}
+
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </button>
 
             </div>
@@ -266,15 +269,16 @@ export const ContestsPage = () => {
 
       </div>
 
+      {/* Empty State */}
       {filteredContests.length === 0 && (
-        <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center">
-          <Trophy className="w-10 h-10 text-slate-300 mx-auto mb-3" />
+        <div className="rounded-xl border border-slate-200 bg-white p-10 text-center">
+          <Trophy className="mx-auto mb-3 h-8 w-8 text-slate-300" />
 
-          <h3 className="font-semibold text-slate-800">
+          <h3 className="text-sm font-medium text-slate-700">
             No contests found
           </h3>
 
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="mt-1 text-xs text-slate-500">
             Try changing your search or filter.
           </p>
         </div>
