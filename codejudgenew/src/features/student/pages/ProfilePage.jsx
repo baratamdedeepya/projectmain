@@ -22,14 +22,16 @@ export const ProfilePage = () => {
   };
 
   return (
-    <div className="font-sans space-y-5">
+    <div className="font-sans space-y-5 dark:bg-slate-950">
+
       {/* Page Heading */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-slate-800">
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-800 dark:text-slate-100">
             My Profile
           </h1>
-          <p className="mt-1 text-xs font-normal text-slate-500">
+
+          <p className="mt-1 text-xs font-normal text-slate-500 dark:text-slate-400">
             Manage your personal information
           </p>
         </div>
@@ -44,22 +46,23 @@ export const ProfilePage = () => {
       </div>
 
       {/* Profile Card */}
-      <div className="rounded-xl border border-slate-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md">
+      <div className="rounded-xl border border-slate-100 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-indigo-50 text-indigo-500">
+
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-indigo-50 text-indigo-500 dark:bg-indigo-900/30 dark:text-indigo-400">
             <User size={34} strokeWidth={1.7} />
           </div>
 
           <div className="text-center sm:text-left">
-            <h2 className="text-lg font-semibold text-slate-800">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
               {profile.name}
             </h2>
 
-            <p className="mt-0.5 text-xs text-slate-500">
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
               Student · {profile.year}
             </p>
 
-            <span className="mt-2 inline-block rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-medium text-indigo-600">
+            <span className="mt-2 inline-block rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-medium text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400">
               Code Judge Student
             </span>
           </div>
@@ -67,8 +70,8 @@ export const ProfilePage = () => {
       </div>
 
       {/* Personal Information */}
-      <div className="rounded-xl border border-slate-100 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-base font-semibold text-slate-800">
+      <div className="rounded-xl border border-slate-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="mb-4 text-base font-semibold text-slate-800 dark:text-slate-100">
           Personal Information
         </h2>
 
@@ -84,7 +87,7 @@ export const ProfilePage = () => {
               key={field.name}
               className={field.full ? 'md:col-span-2' : ''}
             >
-              <label className="mb-1.5 block text-xs font-medium text-slate-500">
+              <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">
                 {field.label}
               </label>
 
@@ -93,13 +96,14 @@ export const ProfilePage = () => {
                 value={profile[field.name]}
                 onChange={handleChange}
                 disabled={!isEditing}
-                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-50 disabled:bg-slate-50 disabled:text-slate-600"
+                className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-50 disabled:bg-slate-50 disabled:text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-indigo-900/50 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
               />
             </div>
           ))}
 
+          {/* Bio */}
           <div className="md:col-span-2">
-            <label className="mb-1.5 block text-xs font-medium text-slate-500">
+            <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">
               Bio
             </label>
 
@@ -109,7 +113,7 @@ export const ProfilePage = () => {
               onChange={handleChange}
               disabled={!isEditing}
               rows={3}
-              className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-50 disabled:bg-slate-50 disabled:text-slate-600"
+              className="w-full resize-none rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-50 disabled:bg-slate-50 disabled:text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-indigo-900/50 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
             />
           </div>
         </div>
@@ -117,29 +121,46 @@ export const ProfilePage = () => {
 
       {/* Coding Statistics */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <Code2 className="mb-2.5 text-indigo-500" size={20} />
-          <p className="text-xs font-medium text-slate-500">
+
+        {/* Problems Solved */}
+        <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700">
+          <Code2 className="mb-2.5 text-indigo-500 dark:text-indigo-400" size={20} />
+
+          <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
             Problems Solved
           </p>
-          <h3 className="mt-1 text-xl font-semibold text-slate-800">120</h3>
+
+          <h3 className="mt-1 text-xl font-semibold text-slate-800 dark:text-slate-100">
+            120
+          </h3>
         </div>
 
-        <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <GraduationCap className="mb-2.5 text-indigo-500" size={20} />
-          <p className="text-xs font-medium text-slate-500">
+        {/* Contest Participations */}
+        <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700">
+          <GraduationCap className="mb-2.5 text-indigo-500 dark:text-indigo-400" size={20} />
+
+          <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
             Contest Participations
           </p>
-          <h3 className="mt-1 text-xl font-semibold text-slate-800">8</h3>
+
+          <h3 className="mt-1 text-xl font-semibold text-slate-800 dark:text-slate-100">
+            8
+          </h3>
         </div>
 
-        <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <Mail className="mb-2.5 text-indigo-500" size={20} />
-          <p className="text-xs font-medium text-slate-500">
+        {/* Member Since */}
+        <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700">
+          <Mail className="mb-2.5 text-indigo-500 dark:text-indigo-400" size={20} />
+
+          <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
             Member Since
           </p>
-          <h3 className="mt-1 text-xl font-semibold text-slate-800">2026</h3>
+
+          <h3 className="mt-1 text-xl font-semibold text-slate-800 dark:text-slate-100">
+            2026
+          </h3>
         </div>
+
       </div>
     </div>
   );

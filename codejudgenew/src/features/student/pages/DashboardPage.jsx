@@ -17,32 +17,32 @@ const stats = [
     value: '128',
     description: '18 this week',
     icon: Code2,
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50',
+    color: 'text-indigo-600 dark:text-indigo-400',
+    bg: 'bg-indigo-50 dark:bg-indigo-900/30',
   },
   {
     title: 'Current Streak',
     value: '7 Days',
     description: 'Keep it going!',
     icon: Flame,
-    color: 'text-orange-500',
-    bg: 'bg-orange-50',
+    color: 'text-orange-500 dark:text-orange-400',
+    bg: 'bg-orange-50 dark:bg-orange-900/30',
   },
   {
     title: 'Contest Rating',
     value: '1,420',
     description: '+45 this month',
     icon: Trophy,
-    color: 'text-amber-500',
-    bg: 'bg-amber-50',
+    color: 'text-amber-500 dark:text-amber-400',
+    bg: 'bg-amber-50 dark:bg-amber-900/30',
   },
   {
     title: 'Accuracy',
     value: '78%',
     description: 'Across all submissions',
     icon: Target,
-    color: 'text-emerald-600',
-    bg: 'bg-emerald-50',
+    color: 'text-emerald-600 dark:text-emerald-400',
+    bg: 'bg-emerald-50 dark:bg-emerald-900/30',
   },
 ];
 
@@ -71,20 +71,20 @@ export const DashboardPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 dark:bg-slate-950">
 
       {/* Welcome Section */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-xs font-medium tracking-wide text-slate-500">
+          <p className="text-xs font-medium tracking-wide text-slate-500 dark:text-slate-400">
             Monday, November 2, 2026
           </p>
 
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-slate-800">
-            Welcome back, Student 👋
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-slate-800 dark:text-slate-100">
+            Welcome back, Student
           </h1>
 
-          <p className="mt-1.5 text-sm leading-5 text-slate-500">
+          <p className="mt-1.5 text-sm leading-5 text-slate-500 dark:text-slate-400">
             Keep learning and improve your coding skills.
           </p>
         </div>
@@ -108,10 +108,10 @@ export const DashboardPage = () => {
           return (
             <div
               key={stat.title}
-              className="cursor-pointer rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-indigo-200 hover:shadow-lg"
+              className="cursor-pointer rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-indigo-200 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500"
             >
               <div className="flex items-center justify-between">
-                <p className="text-xs font-medium text-slate-500">
+                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
                   {stat.title}
                 </p>
 
@@ -120,11 +120,11 @@ export const DashboardPage = () => {
                 </div>
               </div>
 
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-800">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-800 dark:text-slate-100">
                 {stat.value}
               </h2>
 
-              <p className="mt-1.5 text-xs font-normal text-slate-500">
+              <p className="mt-1.5 text-xs font-normal text-slate-500 dark:text-slate-400">
                 {stat.description}
               </p>
             </div>
@@ -136,21 +136,21 @@ export const DashboardPage = () => {
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
 
         {/* Problem Progress */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg xl:col-span-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg xl:col-span-2 dark:border-slate-800 dark:bg-slate-900">
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <h2 className="text-base font-semibold tracking-tight text-slate-800">
+              <h2 className="text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100">
                 Problem Solving Progress
               </h2>
 
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                 Your progress by difficulty
               </p>
             </div>
 
             <button
               onClick={() => navigate('/student/submissions')}
-              className="group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-indigo-600 transition-all duration-300 hover:bg-indigo-50 hover:text-indigo-700"
+              className="group inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-indigo-600 transition-all duration-300 hover:bg-indigo-50 hover:text-indigo-700 dark:text-indigo-400 dark:hover:bg-indigo-900/30 dark:hover:text-indigo-300"
             >
               View All
               <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">
@@ -164,16 +164,16 @@ export const DashboardPage = () => {
             {/* Easy */}
             <div>
               <div className="mb-2 flex justify-between text-xs">
-                <span className="font-medium text-emerald-600">
+                <span className="font-medium text-emerald-600 dark:text-emerald-400">
                   Easy
                 </span>
 
-                <span className="font-medium text-slate-500">
+                <span className="font-medium text-slate-500 dark:text-slate-400">
                   65 / 100
                 </span>
               </div>
 
-              <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                 <div className="h-full w-[65%] rounded-full bg-emerald-500" />
               </div>
             </div>
@@ -181,16 +181,16 @@ export const DashboardPage = () => {
             {/* Medium */}
             <div>
               <div className="mb-2 flex justify-between text-xs">
-                <span className="font-medium text-amber-600">
+                <span className="font-medium text-amber-600 dark:text-amber-400">
                   Medium
                 </span>
 
-                <span className="font-medium text-slate-500">
+                <span className="font-medium text-slate-500 dark:text-slate-400">
                   48 / 150
                 </span>
               </div>
 
-              <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                 <div className="h-full w-[32%] rounded-full bg-amber-500" />
               </div>
             </div>
@@ -198,16 +198,16 @@ export const DashboardPage = () => {
             {/* Hard */}
             <div>
               <div className="mb-2 flex justify-between text-xs">
-                <span className="font-medium text-rose-600">
+                <span className="font-medium text-rose-600 dark:text-rose-400">
                   Hard
                 </span>
 
-                <span className="font-medium text-slate-500">
+                <span className="font-medium text-slate-500 dark:text-slate-400">
                   15 / 100
                 </span>
               </div>
 
-              <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                 <div className="h-full w-[15%] rounded-full bg-rose-500" />
               </div>
             </div>
@@ -251,15 +251,15 @@ export const DashboardPage = () => {
       </div>
 
       {/* Recent Activity */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg">
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
 
         <div className="mb-5 flex items-center justify-between">
           <div>
-            <h2 className="text-base font-semibold tracking-tight text-slate-800">
+            <h2 className="text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100">
               Recent Activity
             </h2>
 
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
               Your latest coding submissions
             </p>
           </div>
@@ -271,14 +271,14 @@ export const DashboardPage = () => {
           {recentActivity.map((activity) => (
             <div
               key={activity.name}
-              className="flex flex-col gap-3 border-b border-slate-100 pb-4 last:border-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between"
+              className="flex flex-col gap-3 border-b border-slate-100 pb-4 last:border-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800"
             >
               <div>
-                <h3 className="text-sm font-medium text-slate-800">
+                <h3 className="text-sm font-medium text-slate-800 dark:text-slate-100">
                   {activity.name}
                 </h3>
 
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                   {activity.difficulty} · {activity.time}
                 </p>
               </div>
@@ -286,8 +286,8 @@ export const DashboardPage = () => {
               <span
                 className={`w-fit rounded-full px-3 py-1.5 text-xs font-medium ${
                   activity.status === 'Accepted'
-                    ? 'bg-emerald-50 text-emerald-600'
-                    : 'bg-rose-50 text-rose-600'
+                    ? 'bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400'
+                    : 'bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400'
                 }`}
               >
                 {activity.status}
