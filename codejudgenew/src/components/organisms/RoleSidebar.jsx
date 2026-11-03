@@ -1,11 +1,29 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Users, BookOpen, GraduationCap, Shield, Sparkles } from 'lucide-react';
+import {
+  LayoutDashboard,
+  Users,
+  BookOpen,
+  GraduationCap,
+  Shield,
+  Code2,
+  ArrowRight,
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  Menu,
+  X
+} from 'lucide-react';
+
 import { useAuth } from '../../context/AuthContext';
 
 export const RoleSidebar = () => {
   const { user } = useAuth();
   const role = user?.role || 'student';
+
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const configs = {
     admin: {
@@ -18,19 +36,21 @@ export const RoleSidebar = () => {
         { label: 'Manage Users', href: '/admin/users', icon: Users },
       ],
     },
+
     student: {
-      title: 'Student Portal',
-      color: 'text-emerald-600',
-      badge: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300',
+      title: 'Code Judge',
+      color: 'text-indigo-600',
+      badge: 'bg-indigo-100 text-indigo-700',
       icon: GraduationCap,
       links: [
-           { label: 'Dashboard', href: '/student', icon: LayoutDashboard },
-           { label: 'Problems', href: '/student/problems', icon: BookOpen },
-           { label: 'Contests', href: '/student/contests', icon: Users },
-           { label: 'Submissions', href: '/student/submissions', icon: BookOpen },
-           { label: 'Profile', href: '/student/profile', icon: GraduationCap },
+        { label: 'Dashboard', href: '/student', icon: LayoutDashboard },
+        { label: 'Problems', href: '/student/problems', icon: BookOpen },
+        { label: 'Contests', href: '/student/contests', icon: Users },
+        { label: 'Submissions', href: '/student/submissions', icon: BookOpen },
+        { label: 'Profile', href: '/student/profile', icon: GraduationCap },
       ],
     },
+
     mentor: {
       title: 'Mentor Console',
       color: 'text-amber-600',
@@ -44,43 +64,174 @@ export const RoleSidebar = () => {
   };
 
   const current = configs[role] || configs.student;
-  const RoleIcon = current.icon;
 
   return (
-    <aside className="w-64 bg-white dark:bg-[#0b0e14] border-r border-slate-200 dark:border-slate-800 flex flex-col h-screen sticky top-0">
-      <div className="p-5 border-b border-slate-200 dark:border-slate-800">
-        <div className="flex items-center gap-2">
-          <RoleIcon className={`w-5 h-5 ${current.color}`} />
-          <span className="font-bold text-base text-slate-900 dark:text-white">
-            {current.title}
-          </span>
-        </div>
-        <span className={`inline-block mt-1 text-[11px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider ${current.badge}`}>
-          {role}
-        </span>
-      </div>
+    <>
+      {/* Mobile Menu Button */}
+      {!mobileOpen && (
+        <button
+          onClick={() => setMobileOpen(true)}
+          className="fixed top-3 left-3 z-[60] flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600 text-white shadow-lg md:hidden"
+        >
+          <Menu size={22} />
+        </button>
+      )}
 
-      <nav className="flex-1 p-3 space-y-1">
-        {current.links.map((link) => {
-          const Icon = link.icon;
-          return (
-            <NavLink
-              key={link.href}
-              to={link.href}
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors ${
-                  isActive
-                    ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-                }`
+      {/* Mobile Overlay */}
+      {mobileOpen && (
+        <div
+          onClick={() => setMobileOpen(false)}
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`
+          fixed md:sticky
+          left-0 top-0 z-50
+          flex h-screen shrink-0 flex-col
+          bg-white dark:bg-[#0b0e14]
+          border-r border-slate-200 dark:border-slate-800
+          transition-all duration-300 ease-in-out
+          ${collapsed ? 'md:w-20' : 'md:w-64'}
+          w-64
+          ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
+          md:translate-x-0
+        `}
+      >
+
+        {/* Logo */}
+        <div className="flex items-center gap-3 p-5 min-h-[85px]">
+
+          <div className="shrink-0 rounded-xl bg-indigo-600 p-2.5 text-white shadow-lg">
+            <Code2 size={23} />
+          </div>
+
+          <div
+            className={`
+              overflow-hidden whitespace-nowrap
+              transition-all duration-300 ease-in-out
+              ${collapsed
+                ? 'w-0 opacity-0'
+                : 'flex-1 opacity-100'
               }
-            >
-              <Icon className="w-4 h-4" />
-              <span>{link.label}</span>
-            </NavLink>
-          );
-        })}
-      </nav>
-    </aside>
+            `}
+          >
+            <h1 className="text-xl font-extrabold tracking-tight">
+              Code Judge
+            </h1>
+
+            <p className="text-xs text-indigo-400">
+              Practice. Improve. Achieve.
+            </p>
+          </div>
+
+          {/* Mobile Close */}
+          <button
+            onClick={() => setMobileOpen(false)}
+            className="ml-auto text-slate-500 md:hidden"
+          >
+            <X size={20} />
+          </button>
+
+        </div>
+
+        {/* Workspace */}
+        <p
+          className={`
+            mb-3 px-5 text-[10px] font-bold uppercase
+            tracking-[2px] text-indigo-300
+            whitespace-nowrap overflow-hidden
+            transition-all duration-300
+            ${collapsed
+              ? 'h-0 opacity-0 mb-0'
+              : 'h-4 opacity-100'
+            }
+          `}
+        >
+          Workspace
+        </p>
+
+        {/* Navigation */}
+        <nav className="flex-1 space-y-1 p-3">
+
+          {current.links.map((link) => {
+            const Icon = link.icon;
+
+            return (
+              <NavLink
+                key={link.href}
+                to={link.href}
+                end={
+                  link.href === '/student' ||
+                  link.href === '/admin' ||
+                  link.href === '/mentor'
+                }
+                title={collapsed ? link.label : ''}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) =>
+                  `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[13px] font-semibold transition-all duration-300 ease-in-out ${
+                    isActive
+                      ? 'translate-x-0.5 bg-indigo-600 text-white shadow-md'
+                      : 'text-slate-500 hover:translate-x-0.5 hover:text-indigo-600'
+                  }`
+                }
+              >
+
+                <Icon className="h-5 w-5 shrink-0" />
+
+                {/* Animated Navigation Label */}
+                <div
+                  className={`
+                    flex items-center justify-between
+                    overflow-hidden whitespace-nowrap
+                    transition-all duration-300 ease-in-out
+                    ${collapsed
+                      ? 'w-0 opacity-0'
+                      : 'flex-1 opacity-100'
+                    }
+                  `}
+                >
+                  <span>{link.label}</span>
+
+                  <ArrowRight
+                    size={14}
+                    className="ml-auto shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                  />
+                </div>
+
+              </NavLink>
+            );
+          })}
+
+        </nav>
+
+        {/* Desktop Collapse Arrow - Top Right */}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="
+            hidden md:flex
+            absolute top-2 -right-3
+            z-[60]
+            h-7 w-7
+            items-center justify-center
+            rounded-full
+            bg-indigo-600 text-white
+            shadow-lg
+            border-2 border-white
+            dark:border-[#0b0e14]
+            hover:bg-indigo-700
+            transition-all duration-300
+          "
+        >
+          {collapsed
+            ? <ChevronRight size={17} />
+            : <ChevronLeft size={17} />
+          }
+        </button>
+
+      </aside>
+    </>
   );
 };
