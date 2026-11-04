@@ -71,7 +71,7 @@ export const RoleSidebar = () => {
       {!mobileOpen && (
         <button
           onClick={() => setMobileOpen(true)}
-          className="fixed top-3 left-3 z-[60] flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600 text-white shadow-lg md:hidden"
+          className="fixed top-2 left-2 z-[60] flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600 text-white shadow-lg md:hidden"
         >
           <Menu size={22} />
         </button>
@@ -81,7 +81,7 @@ export const RoleSidebar = () => {
       {mobileOpen && (
         <div
           onClick={() => setMobileOpen(false)}
-          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          className="fixed inset-0 z-50 bg-black/50 md:hidden"
         />
       )}
 
@@ -101,36 +101,38 @@ export const RoleSidebar = () => {
         `}
       >
 
-        {/* Logo */}
-        <div className="flex items-center gap-3 p-5 min-h-[85px]">
+        {/* Logo Section */}
+        <div className="flex items-center gap-3 px-4 py-5 min-h-[85px]">
 
+          {/* Logo Icon */}
           <div className="shrink-0 rounded-xl bg-indigo-600 p-2.5 text-white shadow-lg">
             <Code2 size={23} />
           </div>
 
+          {/* Logo Text */}
           <div
             className={`
-              overflow-hidden whitespace-nowrap
+              min-w-0 flex-1 whitespace-nowrap
               transition-all duration-300 ease-in-out
               ${collapsed
-                ? 'w-0 opacity-0'
-                : 'flex-1 opacity-100'
+                ? 'md:w-0 md:flex-none md:opacity-0 md:overflow-hidden'
+                : 'opacity-100'
               }
             `}
           >
-            <h1 className="text-xl font-extrabold tracking-tight">
+            <h1 className="text-lg md:text-xl font-extrabold tracking-tight">
               Code Judge
             </h1>
 
-            <p className="text-xs text-indigo-400">
+            <p className="text-xs text-indigo-400 whitespace-nowrap">
               Practice. Improve. Achieve.
             </p>
           </div>
 
-          {/* Mobile Close */}
+          {/* Mobile Close Button */}
           <button
             onClick={() => setMobileOpen(false)}
-            className="ml-auto text-slate-500 md:hidden"
+            className="shrink-0 ml-auto text-slate-500 hover:text-indigo-600 md:hidden"
           >
             <X size={20} />
           </button>
@@ -171,7 +173,7 @@ export const RoleSidebar = () => {
                 title={collapsed ? link.label : ''}
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) =>
-                  `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[13px] font-semibold transition-all duration-300 ease-in-out ${
+                  `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm md:text-[13px] font-semibold transition-all duration-300 ease-in-out ${
                     isActive
                       ? 'translate-x-0.5 bg-indigo-600 text-white shadow-md'
                       : 'text-slate-500 hover:translate-x-0.5 hover:text-indigo-600'
@@ -181,7 +183,7 @@ export const RoleSidebar = () => {
 
                 <Icon className="h-5 w-5 shrink-0" />
 
-                {/* Animated Navigation Label */}
+                {/* Navigation Label */}
                 <div
                   className={`
                     flex items-center justify-between
@@ -207,7 +209,7 @@ export const RoleSidebar = () => {
 
         </nav>
 
-        {/* Desktop Collapse Arrow - Top Right */}
+        {/* Desktop Collapse Arrow */}
         <button
           onClick={() => setCollapsed(!collapsed)}
           className="

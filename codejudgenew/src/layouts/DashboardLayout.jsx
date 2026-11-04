@@ -9,7 +9,8 @@ export const DashboardLayout = () => {
       <RoleSidebar />
 
       {/* Main Content Area */}
-      <main className="flex-1 p-6">
+      {/* md:pt-6 mobile view lo padding top */}
+      <main className="flex-1 p-6 pt-16 md:pt-6">
         <Outlet />
       </main>
     </div>
