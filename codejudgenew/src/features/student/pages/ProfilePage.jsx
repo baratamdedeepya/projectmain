@@ -21,7 +21,7 @@ import {
   Send,
 } from "lucide-react";
 
-export function ProfilePage() {
+export  function ProfilePage() {
   const navigate = useNavigate();
 
   const [year, setYear] = useState(new Date().getFullYear());
@@ -46,25 +46,25 @@ export function ProfilePage() {
       label: "Problems Solved",
       value: "124",
       icon: CheckCircle2,
-      color: "bg-indigo-100 text-indigo-600",
+      color: "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-400",
     },
     {
       label: "Day Streak",
       value: "12",
       icon: Flame,
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-orange-100 text-orange-600 dark:bg-orange-900/40 dark:text-orange-400",
     },
     {
       label: "Global Rank",
       value: "#245",
       icon: Trophy,
-      color: "bg-purple-100 text-purple-600",
+      color: "bg-purple-100 text-purple-600 dark:bg-purple-900/40 dark:text-purple-400",
     },
     {
       label: "Submissions",
       value: "350",
       icon: Send,
-      color: "bg-blue-100 text-blue-600",
+      color: "bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400",
     },
   ];
 
@@ -74,37 +74,37 @@ export function ProfilePage() {
       title: "Problem Solver",
       description: "100+ problems solved",
       icon: Target,
-      color: "bg-indigo-100 text-indigo-600",
+      color: "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-400",
     },
     {
       title: "Daily Streak",
       description: "12 days active",
       icon: Flame,
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-orange-100 text-orange-600 dark:bg-orange-900/40 dark:text-orange-400",
     },
     {
       title: "Top Performer",
       description: "Global rank #245",
       icon: Trophy,
-      color: "bg-amber-100 text-amber-600",
+      color: "bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400",
     },
     {
       title: "Quick Learner",
       description: "Always improving",
       icon: Code2,
-      color: "bg-blue-100 text-blue-600",
+      color: "bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400",
     },
     {
       title: "Dedicated",
       description: "Consistent practice",
       icon: Medal,
-      color: "bg-purple-100 text-purple-600",
+      color: "bg-purple-100 text-purple-600 dark:bg-purple-900/40 dark:text-purple-400",
     },
     {
       title: "Book Worm",
       description: "Completed 10 topics",
       icon: BookOpen,
-      color: "bg-cyan-100 text-cyan-600",
+      color: "bg-cyan-100 text-cyan-600 dark:bg-cyan-900/40 dark:text-cyan-400",
     },
   ];
 
@@ -165,11 +165,16 @@ export function ProfilePage() {
 
   // HEATMAP COLORS
   const getColor = (count) => {
-    if (count === 0) return "bg-[#edf1fa]";
-    if (count <= 2) return "bg-[#c7d2fe]";
-    if (count <= 4) return "bg-[#818cf8]";
-    if (count <= 6) return "bg-[#6366f1]";
-    return "bg-[#3730a3]";
+    if (count === 0)
+      return "bg-[#edf1fa] dark:bg-slate-800";
+    if (count <= 2)
+      return "bg-[#c7d2fe] dark:bg-indigo-950";
+    if (count <= 4)
+      return "bg-[#818cf8] dark:bg-indigo-800";
+    if (count <= 6)
+      return "bg-[#6366f1] dark:bg-indigo-600";
+
+    return "bg-[#3730a3] dark:bg-indigo-400";
   };
 
   // BUILD CALENDAR
@@ -230,22 +235,22 @@ export function ProfilePage() {
   };
 
   return (
-    <main className="min-h-screen w-full overflow-x-clip bg-gradient-to-br from-slate-50 via-indigo-50/50 to-purple-100/60 px-3 py-4 text-slate-800 sm:px-5 sm:py-5 md:px-6 lg:px-8 lg:py-7">
+    <main className="min-h-screen w-full overflow-x-clip bg-gradient-to-br from-slate-50 via-indigo-50/50 to-purple-100/60 px-3 py-4 text-slate-800 transition-colors duration-300 dark:bg-none dark:bg-slate-950 dark:text-slate-100 sm:px-5 sm:py-5 md:px-6 lg:px-8 lg:py-7">
 
       <div className="mx-auto flex w-full max-w-[1450px] min-w-0 flex-col gap-4 sm:gap-5 lg:gap-6">
 
         {/* PROFILE DETAILS */}
-        <section className="w-full min-w-0 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm sm:p-5 md:p-6 lg:p-8">
+        <section className="w-full min-w-0 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 sm:p-5 md:p-6 lg:p-8">
 
           <div className="flex min-w-0 flex-col gap-5 sm:gap-6 md:flex-row md:items-start">
 
             {/* AVATAR */}
             <div className="relative mx-auto shrink-0 md:mx-0">
-              <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-indigo-100 bg-indigo-50 text-4xl font-bold text-indigo-700 shadow-sm sm:h-28 sm:w-28 sm:text-5xl lg:h-36 lg:w-36 lg:border-[6px]">
+              <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-indigo-100 bg-indigo-50 text-4xl font-bold text-indigo-700 shadow-sm dark:border-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 sm:h-28 sm:w-28 sm:text-5xl lg:h-36 lg:w-36 lg:border-[6px]">
                 {profile.name.charAt(0).toUpperCase()}
               </div>
 
-              <div className="absolute bottom-0 right-0 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-indigo-600 text-white shadow sm:h-9 sm:w-9 lg:h-10 lg:w-10">
+              <div className="absolute bottom-0 right-0 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-indigo-600 text-white shadow dark:border-slate-900 sm:h-9 sm:w-9 lg:h-10 lg:w-10">
                 <Edit3 size={16} />
               </div>
             </div>
@@ -260,17 +265,17 @@ export function ProfilePage() {
 
                   <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start sm:gap-3">
 
-                    <h1 className="max-w-full break-words text-2xl font-bold leading-tight text-indigo-950 sm:text-3xl lg:text-4xl">
+                    <h1 className="max-w-full break-words text-2xl font-bold leading-tight text-indigo-950 dark:text-slate-100 sm:text-3xl lg:text-4xl">
                       {profile.name}
                     </h1>
 
-                    <span className="shrink-0 rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700">
+                    <span className="shrink-0 rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300">
                       {profile.role}
                     </span>
 
                   </div>
 
-                  <p className="mt-2 break-all text-sm font-medium text-indigo-500">
+                  <p className="mt-2 break-all text-sm font-medium text-indigo-500 dark:text-indigo-400">
                     @{profile.username}
                   </p>
 
@@ -290,12 +295,12 @@ export function ProfilePage() {
               </div>
 
               {/* EDUCATION AND LOCATION */}
-              <div className="mt-5 flex min-w-0 flex-col gap-3 text-sm text-slate-600">
+              <div className="mt-5 flex min-w-0 flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
 
                 <p className="flex min-w-0 items-start justify-center gap-2 text-center sm:justify-start sm:text-left">
                   <GraduationCap
                     size={19}
-                    className="mt-0.5 shrink-0 text-indigo-600"
+                    className="mt-0.5 shrink-0 text-indigo-600 dark:text-indigo-400"
                   />
 
                   <span className="min-w-0 break-words">
@@ -306,7 +311,7 @@ export function ProfilePage() {
                 <p className="flex items-center justify-center gap-2 sm:justify-start">
                   <MapPin
                     size={19}
-                    className="shrink-0 text-indigo-600"
+                    className="shrink-0 text-indigo-600 dark:text-indigo-400"
                   />
 
                   <span className="break-words">
@@ -317,7 +322,7 @@ export function ProfilePage() {
               </div>
 
               {/* BIO */}
-              <p className="mt-4 break-words text-center text-sm leading-6 text-slate-600 sm:text-left">
+              <p className="mt-4 break-words text-center text-sm leading-6 text-slate-600 dark:text-slate-300 sm:text-left">
                 {profile.bio}
               </p>
 
@@ -326,7 +331,7 @@ export function ProfilePage() {
                 {profile.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-indigo-200 bg-indigo-50 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100 sm:px-4"
+                    className="rounded-full border border-indigo-200 bg-indigo-50 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:border-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 dark:hover:bg-indigo-900 sm:px-4"
                   >
                     {skill}
                   </span>
@@ -346,7 +351,7 @@ export function ProfilePage() {
             return (
               <div
                 key={item.label}
-                className="flex min-w-0 items-center gap-3 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md sm:gap-4 sm:p-5"
+                className="flex min-w-0 items-center gap-3 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:gap-4 sm:p-5"
               >
                 <div
                   className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full sm:h-14 sm:w-14 lg:h-16 lg:w-16 ${item.color}`}
@@ -355,18 +360,18 @@ export function ProfilePage() {
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <h2 className="text-xl font-bold text-indigo-950 sm:text-2xl">
+                  <h2 className="text-xl font-bold text-indigo-950 dark:text-slate-100 sm:text-2xl">
                     {item.value}
                   </h2>
 
-                  <p className="mt-1 break-words text-xs text-slate-500 sm:text-sm">
+                  <p className="mt-1 break-words text-xs text-slate-500 dark:text-slate-400 sm:text-sm">
                     {item.label}
                   </p>
                 </div>
 
                 <ChevronRight
                   size={20}
-                  className="shrink-0 text-indigo-600"
+                  className="shrink-0 text-indigo-600 dark:text-indigo-400"
                 />
               </div>
             );
@@ -378,11 +383,11 @@ export function ProfilePage() {
         <section className="grid min-w-0 grid-cols-1 items-stretch gap-4 lg:gap-5 xl:grid-cols-[1.3fr_0.9fr]">
 
           {/* CODING STREAK */}
-          <div className="min-w-0 overflow-hidden rounded-2xl border border-[#e1e8f8] bg-white p-4 shadow-sm sm:p-5 md:p-6">
+          <div className="min-w-0 overflow-hidden rounded-2xl border border-[#e1e8f8] bg-white p-4 shadow-sm transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 sm:p-5 md:p-6">
 
             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
 
-              <h2 className="flex items-center gap-2 text-base font-bold text-[#10204b] sm:text-lg">
+              <h2 className="flex items-center gap-2 text-base font-bold text-[#10204b] dark:text-slate-100 sm:text-lg">
                 <Flame
                   size={21}
                   className="shrink-0 text-orange-500"
@@ -395,12 +400,12 @@ export function ProfilePage() {
                 <button
                   onClick={() => setYear(year - 1)}
                   aria-label="Previous year"
-                  className="rounded-lg p-2 text-[#7085ac] transition hover:bg-[#eef0ff] hover:text-[#6366f1]"
+                  className="rounded-lg p-2 text-[#7085ac] transition hover:bg-[#eef0ff] hover:text-[#6366f1] dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400"
                 >
                   <ChevronLeft size={18} />
                 </button>
 
-                <span className="min-w-[42px] text-center text-sm font-semibold text-[#10204b]">
+                <span className="min-w-[42px] text-center text-sm font-semibold text-[#10204b] dark:text-slate-100">
                   {year}
                 </span>
 
@@ -408,7 +413,7 @@ export function ProfilePage() {
                   onClick={() => setYear(year + 1)}
                   disabled={year >= new Date().getFullYear()}
                   aria-label="Next year"
-                  className="rounded-lg p-2 text-[#7085ac] transition hover:bg-[#eef0ff] hover:text-[#6366f1] disabled:opacity-30"
+                  className="rounded-lg p-2 text-[#7085ac] transition hover:bg-[#eef0ff] hover:text-[#6366f1] disabled:opacity-30 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400"
                 >
                   <ChevronRight size={18} />
                 </button>
@@ -418,17 +423,17 @@ export function ProfilePage() {
 
             {/* YEARLY TOTAL */}
             <div className="mb-5 flex flex-wrap items-center gap-3">
-              <p className="text-3xl font-bold text-[#10204b] sm:text-4xl">
+              <p className="text-3xl font-bold text-[#10204b] dark:text-slate-100 sm:text-4xl">
                 {yearlyTotal}
               </p>
 
-              <p className="text-xs text-[#7085ac] sm:text-sm">
+              <p className="text-xs text-[#7085ac] dark:text-slate-400 sm:text-sm">
                 Problems solved this year
               </p>
             </div>
 
             {/* HEATMAP */}
-            <div className="w-full max-w-full overflow-x-auto overflow-y-hidden pb-3 [scrollbar-width:thin] [scrollbar-color:#818cf8_#edf1fa] [&::-webkit-scrollbar]:h-[7px] [&::-webkit-scrollbar-button]:hidden [&::-webkit-scrollbar-button]:w-0 [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#edf1fa] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#818cf8] [&::-webkit-scrollbar-thumb:hover]:bg-[#4f46e5]">
+            <div className="w-full max-w-full overflow-x-auto overflow-y-hidden pb-3 [scrollbar-width:thin] [scrollbar-color:#818cf8_#edf1fa] [&::-webkit-scrollbar]:h-[7px] [&::-webkit-scrollbar-button]:hidden [&::-webkit-scrollbar-button]:w-0 [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#edf1fa] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#818cf8] [&::-webkit-scrollbar-thumb:hover]:bg-[#4f46e5] dark:[scrollbar-color:#6366f1_#1e293b] dark:[&::-webkit-scrollbar-track]:bg-slate-800 dark:[&::-webkit-scrollbar-thumb]:bg-indigo-500 dark:[&::-webkit-scrollbar-thumb:hover]:bg-indigo-400">
 
               <div className="w-max min-w-[680px]">
 
@@ -453,7 +458,7 @@ export function ProfilePage() {
                         className="relative h-4 w-[10px] shrink-0"
                       >
                         {monthName && (
-                          <span className="absolute left-0 whitespace-nowrap text-[10px] font-medium text-[#7085ac]">
+                          <span className="absolute left-0 whitespace-nowrap text-[10px] font-medium text-[#7085ac] dark:text-slate-400">
                             {monthName}
                           </span>
                         )}
@@ -494,29 +499,29 @@ export function ProfilePage() {
             {/* LEGEND */}
             <div className="mt-3 flex flex-col items-start justify-between gap-3 min-[400px]:flex-row min-[400px]:items-center">
 
-              <span className="text-xs text-[#7085ac]">
+              <span className="text-xs text-[#7085ac] dark:text-slate-400">
                 Daily activity
               </span>
 
               <div className="flex items-center gap-1.5">
-                <span className="text-[10px] text-[#7085ac]">
+                <span className="text-[10px] text-[#7085ac] dark:text-slate-400">
                   Less
                 </span>
 
                 {[
-                  "bg-[#edf1fa]",
-                  "bg-[#c7d2fe]",
-                  "bg-[#818cf8]",
-                  "bg-[#6366f1]",
-                  "bg-[#3730a3]",
-                ].map((color) => (
+                  "bg-[#edf1fa] dark:bg-slate-800",
+                  "bg-[#c7d2fe] dark:bg-indigo-950",
+                  "bg-[#818cf8] dark:bg-indigo-800",
+                  "bg-[#6366f1] dark:bg-indigo-600",
+                  "bg-[#3730a3] dark:bg-indigo-400",
+                ].map((color, index) => (
                   <span
-                    key={color}
+                    key={index}
                     className={`h-3 w-3 shrink-0 rounded-[3px] ${color}`}
                   />
                 ))}
 
-                <span className="text-[10px] text-[#7085ac]">
+                <span className="text-[10px] text-[#7085ac] dark:text-slate-400">
                   More
                 </span>
               </div>
@@ -525,7 +530,7 @@ export function ProfilePage() {
           </div>
 
           {/* ACHIEVEMENTS */}
-          <div className="min-w-0 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm sm:p-5 md:p-6">
+          <div className="min-w-0 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 sm:p-5 md:p-6">
 
             <div className="flex items-center justify-between gap-3">
 
@@ -533,20 +538,20 @@ export function ProfilePage() {
                 <div className="flex items-center gap-2">
                   <Award
                     size={22}
-                    className="shrink-0 text-indigo-600"
+                    className="shrink-0 text-indigo-600 dark:text-indigo-400"
                   />
 
-                  <h2 className="text-lg font-bold text-indigo-950 sm:text-xl">
+                  <h2 className="text-lg font-bold text-indigo-950 dark:text-slate-100 sm:text-xl">
                     Achievements
                   </h2>
                 </div>
 
-                <p className="mt-1 text-xs text-slate-500 sm:text-sm">
+                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 sm:text-sm">
                   Milestones in your coding journey
                 </p>
               </div>
 
-              <span className="shrink-0 rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-600">
+              <span className="shrink-0 rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-300">
                 6 badges
               </span>
 
@@ -561,7 +566,7 @@ export function ProfilePage() {
                 return (
                   <div
                     key={item.title}
-                    className="flex min-w-0 items-center gap-3 rounded-xl p-2 transition hover:bg-indigo-50"
+                    className="flex min-w-0 items-center gap-3 rounded-xl p-2 transition hover:bg-indigo-50 dark:hover:bg-slate-800"
                   >
                     <div
                       className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl sm:h-12 sm:w-12 ${item.color}`}
@@ -570,11 +575,11 @@ export function ProfilePage() {
                     </div>
 
                     <div className="min-w-0">
-                      <h3 className="break-words text-sm font-bold text-indigo-950">
+                      <h3 className="break-words text-sm font-bold text-indigo-950 dark:text-slate-100">
                         {item.title}
                       </h3>
 
-                      <p className="mt-1 text-xs leading-5 text-slate-500">
+                      <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
                         {item.description}
                       </p>
                     </div>
@@ -587,23 +592,23 @@ export function ProfilePage() {
         </section>
 
         {/* RECENT SUBMISSIONS */}
-        <section className="min-w-0 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm sm:p-5 md:p-6">
+        <section className="min-w-0 rounded-2xl border border-indigo-100 bg-white p-4 shadow-sm transition-colors duration-300 dark:border-slate-800 dark:bg-slate-900 sm:p-5 md:p-6">
 
           <div className="flex flex-col gap-4 min-[420px]:flex-row min-[420px]:items-center min-[420px]:justify-between">
 
             <div className="min-w-0">
-              <h2 className="text-lg font-bold text-indigo-950 sm:text-xl">
+              <h2 className="text-lg font-bold text-indigo-950 dark:text-slate-100 sm:text-xl">
                 Recent Submissions
               </h2>
 
-              <p className="mt-1 text-xs text-slate-500 sm:text-sm">
+              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 sm:text-sm">
                 Your latest coding activity
               </p>
             </div>
 
             <button
               onClick={() => navigate("/student/submissions")}
-              className="flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100 min-[420px]:w-auto"
+              className="flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:bg-indigo-900/40 dark:text-indigo-300 dark:hover:bg-indigo-900/70 min-[420px]:w-auto"
             >
               View All
               <ArrowRight size={17} />
@@ -617,7 +622,7 @@ export function ProfilePage() {
             <table className="w-full min-w-[620px] text-left text-xs sm:min-w-[650px] sm:text-sm">
 
               <thead>
-                <tr className="border-b border-slate-100 text-[10px] uppercase text-slate-500 sm:text-xs">
+                <tr className="border-b border-slate-100 text-[10px] uppercase text-slate-500 dark:border-slate-800 dark:text-slate-400 sm:text-xs">
 
                   <th className="whitespace-nowrap px-3 py-4 sm:px-4">
                     Problem
@@ -646,10 +651,10 @@ export function ProfilePage() {
                 {submissions.map((item) => (
                   <tr
                     key={item.title}
-                    className="border-b border-slate-50 transition hover:bg-indigo-50/50"
+                    className="border-b border-slate-50 transition hover:bg-indigo-50/50 dark:border-slate-800 dark:hover:bg-slate-800/70"
                   >
 
-                    <td className="whitespace-nowrap px-3 py-4 font-semibold text-slate-800 sm:px-4">
+                    <td className="whitespace-nowrap px-3 py-4 font-semibold text-slate-800 dark:text-slate-100 sm:px-4">
                       {item.title}
                     </td>
 
@@ -657,8 +662,8 @@ export function ProfilePage() {
                       <span
                         className={`rounded-full px-3 py-1 text-xs font-medium ${
                           item.difficulty === "Easy"
-                            ? "bg-emerald-50 text-emerald-700"
-                            : "bg-amber-50 text-amber-700"
+                            ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
+                            : "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
                         }`}
                       >
                         {item.difficulty}
@@ -666,17 +671,17 @@ export function ProfilePage() {
                     </td>
 
                     <td className="whitespace-nowrap px-3 py-4 sm:px-4">
-                      <span className="flex items-center gap-1.5 font-medium text-emerald-600">
+                      <span className="flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
                         <CheckCircle2 size={15} />
                         {item.status}
                       </span>
                     </td>
 
-                    <td className="whitespace-nowrap px-3 py-4 text-slate-600 sm:px-4">
+                    <td className="whitespace-nowrap px-3 py-4 text-slate-600 dark:text-slate-300 sm:px-4">
                       {item.language}
                     </td>
 
-                    <td className="whitespace-nowrap px-3 py-4 text-slate-500 sm:px-4">
+                    <td className="whitespace-nowrap px-3 py-4 text-slate-500 dark:text-slate-400 sm:px-4">
                       {item.date}
                     </td>
 
@@ -692,20 +697,20 @@ export function ProfilePage() {
 
       {/* EDIT PROFILE MODAL */}
       {showEdit && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-slate-950/50 p-3 sm:p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-slate-950/50 p-3 backdrop-blur-sm sm:p-4">
 
-          <div className="my-auto max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-4 shadow-2xl sm:p-6">
+          <div className="my-auto max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl transition-colors duration-300 dark:border-slate-700 dark:bg-slate-900 sm:p-6">
 
             {/* MODAL HEADER */}
             <div className="mb-5 flex items-center justify-between sm:mb-6">
-              <h2 className="text-lg font-bold text-indigo-950 sm:text-xl">
+              <h2 className="text-lg font-bold text-indigo-950 dark:text-slate-100 sm:text-xl">
                 Edit Profile
               </h2>
 
               <button
                 onClick={() => setShowEdit(false)}
                 aria-label="Close edit profile"
-                className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100"
+                className="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
               >
                 <X size={20} />
               </button>
@@ -724,7 +729,7 @@ export function ProfilePage() {
               ].map(([field, label]) => (
                 <div key={field}>
 
-                  <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                  <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">
                     {label}
                   </label>
 
@@ -737,14 +742,14 @@ export function ProfilePage() {
                         [field]: e.target.value,
                       })
                     }
-                    className="w-full min-w-0 rounded-xl border border-slate-200 px-4 py-2.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                    className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-900/50"
                   />
 
                 </div>
               ))}
 
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">
                   About Me
                 </label>
 
@@ -757,7 +762,7 @@ export function ProfilePage() {
                       bio: e.target.value,
                     })
                   }
-                  className="w-full resize-none rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:focus:border-indigo-400 dark:focus:ring-indigo-900/50"
                 />
               </div>
 
@@ -768,7 +773,7 @@ export function ProfilePage() {
 
               <button
                 onClick={() => setShowEdit(false)}
-                className="w-full rounded-xl border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 sm:w-auto"
+                className="w-full rounded-xl border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 sm:w-auto"
               >
                 Cancel
               </button>
